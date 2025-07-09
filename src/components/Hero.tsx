@@ -1,5 +1,4 @@
 
-
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
@@ -38,43 +37,43 @@ const Hero = ({ language }: HeroProps) => {
       {/* Animated Background Images */}
       <div className="absolute inset-0">
         {/* Image 1 - Large, top right */}
-        <div className="absolute top-10 right-10 w-80 h-96 animate-[float_6s_ease-in-out_infinite] opacity-20">
+        <div className="absolute top-10 right-10 w-80 h-96 animate-[float_6s_ease-in-out_infinite] opacity-35">
           <img
             src={heroImage}
             alt="Hair styling"
-            className="w-full h-full object-cover rounded-2xl shadow-elegant"
+            className="w-full h-full object-cover rounded-2xl shadow-elegant brightness-110"
           />
-          <div className="absolute inset-0 bg-gradient-overlay rounded-2xl"></div>
+          <div className="absolute inset-0 bg-gradient-overlay/40 rounded-2xl"></div>
         </div>
         
         {/* Image 2 - Medium, left side */}
-        <div className="absolute top-32 left-16 w-56 h-72 animate-[float_8s_ease-in-out_infinite_1s] opacity-15">
+        <div className="absolute top-32 left-16 w-56 h-72 animate-[float_8s_ease-in-out_infinite_1s] opacity-30">
           <img
             src={colorService}
             alt="Hair coloring"
-            className="w-full h-full object-cover rounded-2xl shadow-elegant"
+            className="w-full h-full object-cover rounded-2xl shadow-elegant brightness-110"
           />
-          <div className="absolute inset-0 bg-gradient-overlay rounded-2xl"></div>
+          <div className="absolute inset-0 bg-gradient-overlay/40 rounded-2xl"></div>
         </div>
         
         {/* Image 3 - Small, bottom right */}
-        <div className="absolute bottom-20 right-32 w-40 h-52 animate-[float_7s_ease-in-out_infinite_2s] opacity-10">
+        <div className="absolute bottom-20 right-32 w-40 h-52 animate-[float_7s_ease-in-out_infinite_2s] opacity-25">
           <img
             src={straighteningService}
             alt="Hair treatment"
-            className="w-full h-full object-cover rounded-2xl shadow-elegant"
+            className="w-full h-full object-cover rounded-2xl shadow-elegant brightness-110"
           />
-          <div className="absolute inset-0 bg-gradient-overlay rounded-2xl"></div>
+          <div className="absolute inset-0 bg-gradient-overlay/40 rounded-2xl"></div>
         </div>
         
-        {/* Dark overlay for content readability */}
-        <div className="absolute inset-0 bg-dark/60"></div>
+        {/* Dark overlay for content readability - reduced intensity */}
+        <div className="absolute inset-0 bg-dark/40"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <div className="animate-fade-in">
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-16 leading-[0.9] tracking-tight">
+          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-foreground mb-16 leading-[0.9] tracking-tight drop-shadow-2xl">
             {content[language].title}
             <br />
             <span className="bg-gradient-gold bg-clip-text text-transparent">
@@ -86,7 +85,7 @@ const Hero = ({ language }: HeroProps) => {
             <Button 
               size="lg" 
               variant="gold"
-              className="text-xl px-12 py-6 rounded-full font-semibold tracking-wide hover:scale-105 transition-all duration-500"
+              className="text-xl px-12 py-6 rounded-full font-semibold tracking-wide hover:scale-105 transition-all duration-500 shadow-2xl"
               onClick={() => document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" })}
             >
               {content[language].cta}
@@ -95,7 +94,7 @@ const Hero = ({ language }: HeroProps) => {
             <Button 
               size="lg" 
               variant="gold-outline"
-              className="text-xl px-12 py-6 rounded-full font-semibold tracking-wide hover:scale-105 transition-all duration-500 group"
+              className="text-xl px-12 py-6 rounded-full font-semibold tracking-wide hover:scale-105 transition-all duration-500 group shadow-2xl backdrop-blur-sm"
               onClick={scrollToServices}
             >
               {content[language].scroll}
@@ -109,4 +108,3 @@ const Hero = ({ language }: HeroProps) => {
 };
 
 export default Hero;
-
