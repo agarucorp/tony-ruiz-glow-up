@@ -4,6 +4,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import About from "@/components/About";
 import Contact from "@/components/Contact";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   const [language, setLanguage] = useState<"es" | "en">("es");
@@ -15,6 +16,7 @@ const Index = () => {
       <Services language={language} />
       <About language={language} />
       <Contact language={language} />
+      <Footer language={language} />
     </div>
   );
 };

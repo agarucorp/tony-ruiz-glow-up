@@ -46,13 +46,7 @@ const Hero = ({ language }: HeroProps) => {
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <div className="animate-fade-in">
-          <div className="flex items-center justify-center mb-6">
-            <Sparkles className="w-6 h-6 text-primary mr-2 animate-glow" />
-            <span className="text-primary font-medium tracking-widest uppercase text-sm">
-              Tony Ruiz Hair Studio
-            </span>
-            <Sparkles className="w-6 h-6 text-primary ml-2 animate-glow" />
-          </div>
+          
           
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-4 leading-tight">
             {content[language].title}
@@ -89,17 +83,6 @@ const Hero = ({ language }: HeroProps) => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <button
-          onClick={scrollToServices}
-          className="flex flex-col items-center text-foreground/60 hover:text-primary transition-colors duration-300"
-        >
-          <div className="w-6 h-10 border-2 border-current rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-current rounded-full mt-2 animate-bounce"></div>
-          </div>
-        </button>
-      </div>
     </section>
   );
 };

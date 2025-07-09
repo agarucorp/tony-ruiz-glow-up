@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Clock, Instagram, Facebook, Mail } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { MapPin, Phone, Clock, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 interface ContactProps {
@@ -32,6 +33,14 @@ const Contact = ({ language }: ContactProps) => {
         message: "Mensaje",
         submit: "Enviar Consulta"
       },
+      services: [
+        "Coloración",
+        "Alisado",
+        "Corte y peinado",
+        "Tratamiento capilar",
+        "Mechas y highlights",
+        "Consultoría de imagen"
+      ],
       locations: [
         {
           title: "Buenos Aires",
@@ -48,7 +57,6 @@ const Contact = ({ language }: ContactProps) => {
           hours: "Lun-Sáb: 10:00-19:00"
         }
       ],
-      social: "Síguenos en redes sociales",
       success: "¡Mensaje enviado! Te contactaremos pronto.",
       error: "Error al enviar el mensaje. Intenta nuevamente."
     },
@@ -63,6 +71,14 @@ const Contact = ({ language }: ContactProps) => {
         message: "Message",
         submit: "Send Inquiry"
       },
+      services: [
+        "Coloring",
+        "Straightening",
+        "Cut and styling",
+        "Hair treatment",
+        "Highlights and balayage",
+        "Image consultation"
+      ],
       locations: [
         {
           title: "Buenos Aires",
@@ -79,7 +95,6 @@ const Contact = ({ language }: ContactProps) => {
           hours: "Mon-Sat: 10:00-19:00"
         }
       ],
-      social: "Follow us on social media",
       success: "Message sent! We'll contact you soon.",
       error: "Error sending message. Please try again."
     }
@@ -119,55 +134,75 @@ const Contact = ({ language }: ContactProps) => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+
+
+        {/* Main Content Grid */}
+        <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Contact Form */}
-          <Card className="p-8 bg-dark-lighter border-dark-border">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <Input
-                    name="name"
-                    placeholder={content[language].form.name}
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="bg-dark border-dark-border focus:border-primary"
-                    required
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder={content[language].form.email}
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="bg-dark border-dark-border focus:border-primary"
-                    required
-                  />
-                </div>
+          <Card className="p-6 bg-dark-lighter border-dark-border">
+            <div className="mb-6">
+              <h3 className="font-display text-2xl font-semibold text-foreground mb-2">
+                {language === "es" ? "Envíanos tu consulta" : "Send us your inquiry"}
+              </h3>
+              <p className="text-foreground/70">
+                {language === "es" 
+                  ? "Completa el formulario y nos pondremos en contacto contigo en las próximas 24 horas."
+                  : "Fill out the form and we'll get in touch with you within the next 24 hours."
+                }
+              </p>
+            </div>
+            
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <Input
+                  name="name"
+                  placeholder={content[language].form.name}
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className="bg-dark border-dark-border focus:border-primary w-full"
+                  required
+                />
               </div>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <Input
-                    name="phone"
-                    placeholder={content[language].form.phone}
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    className="bg-dark border-dark-border focus:border-primary"
-                    required
-                  />
-                </div>
-                <div>
-                  <Input
-                    name="service"
-                    placeholder={content[language].form.service}
-                    value={formData.service}
-                    onChange={handleInputChange}
-                    className="bg-dark border-dark-border focus:border-primary"
-                    required
-                  />
-                </div>
+              <div>
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder={content[language].form.email}
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="bg-dark border-dark-border focus:border-primary w-full"
+                  required
+                />
+              </div>
+              
+              <div>
+                <Input
+                  name="phone"
+                  placeholder={content[language].form.phone}
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className="bg-dark border-dark-border focus:border-primary w-full"
+                  required
+                />
+              </div>
+              
+              <div>
+                <Select 
+                  value={formData.service} 
+                  onValueChange={(value) => setFormData({ ...formData, service: value })}
+                >
+                  <SelectTrigger className="bg-dark border-dark-border focus:border-primary w-full">
+                    <SelectValue placeholder={content[language].form.service} />
+                  </SelectTrigger>
+                  <SelectContent className="bg-dark border-dark-border">
+                    {content[language].services.map((service) => (
+                      <SelectItem key={service} value={service}>
+                        {service}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
               
               <div>
@@ -176,7 +211,7 @@ const Contact = ({ language }: ContactProps) => {
                   placeholder={content[language].form.message}
                   value={formData.message}
                   onChange={handleInputChange}
-                  className="bg-dark border-dark-border focus:border-primary h-32 resize-none"
+                  className="bg-dark border-dark-border focus:border-primary h-32 resize-none w-full"
                   required
                 />
               </div>
@@ -187,70 +222,54 @@ const Contact = ({ language }: ContactProps) => {
             </form>
           </Card>
 
-          {/* Location & Contact Info */}
-          <div className="space-y-8">
-            {content[language].locations.map((location) => (
-              <Card key={location.title} className="p-6 bg-dark-lighter border-dark-border">
-                <h3 className="font-display text-xl font-semibold text-primary mb-4">
-                  {location.title}
-                </h3>
-                
-                <div className="space-y-3 mb-6">
-                  <div className="flex items-center text-foreground/80">
-                    <MapPin className="w-5 h-5 text-primary mr-3" />
-                    <span>{location.address}</span>
-                  </div>
-                  <div className="flex items-center text-foreground/80">
-                    <Phone className="w-5 h-5 text-primary mr-3" />
-                    <span>{location.phone}</span>
-                  </div>
-                  <div className="flex items-center text-foreground/80">
-                    <Clock className="w-5 h-5 text-primary mr-3" />
-                    <span>{location.hours}</span>
-                  </div>
-                </div>
-                
-                <Button
-                  variant="gold-outline"
-                  onClick={() => openWhatsApp(location.whatsapp)}
-                  className="w-full"
-                >
-                  WhatsApp {location.title}
-                </Button>
-              </Card>
-            ))}
-
-            {/* Social Media */}
-            <Card className="p-6 bg-dark-lighter border-dark-border">
-              <h3 className="font-semibold text-foreground mb-4">
-                {content[language].social}
-              </h3>
-              
-              <div className="flex space-x-4">
-                <Button
-                  variant="elegant"
-                  size="icon"
-                  onClick={() => window.open("https://instagram.com/tonyruizhair", "_blank")}
-                >
-                  <Instagram className="w-5 h-5" />
-                </Button>
-                <Button
-                  variant="elegant"
-                  size="icon"
-                  onClick={() => window.open("https://facebook.com/tonyruizhair", "_blank")}
-                >
-                  <Facebook className="w-5 h-5" />
-                </Button>
-                <Button
-                  variant="elegant"
-                  size="icon"
-                  onClick={() => window.open("mailto:info@tonyruizhair.com", "_blank")}
-                >
-                  <Mail className="w-5 h-5" />
-                </Button>
+          {/* Enhanced Booking Information */}
+          <Card className="p-6 bg-dark-lighter border-dark-border h-fit">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                <Clock className="w-8 h-8 text-dark" />
               </div>
-            </Card>
-          </div>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                {language === "es" ? "Horarios de Atención" : "Opening Hours"}
+              </h3>
+              <p className="text-sm text-foreground/70">
+                {language === "es" 
+                  ? "Visítanos en cualquiera de nuestras ubicaciones"
+                  : "Visit us at any of our locations"
+                }
+              </p>
+            </div>
+            
+            <div className="space-y-6">
+              {content[language].locations.map((location) => (
+                <div key={location.title} className="border border-dark-border rounded-lg p-4">
+                  <h4 className="font-semibold text-primary mb-3 text-center">
+                    {location.title}
+                  </h4>
+                  
+                  <div className="space-y-2 mb-4">
+                    <div className="flex items-center text-sm text-foreground/80">
+                      <MapPin className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <span>{location.address}</span>
+                    </div>
+                    <div className="flex items-center text-sm text-foreground/80">
+                      <Clock className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                      <span>{location.hours}</span>
+                    </div>
+                  </div>
+                  
+                  <Button
+                    variant="gold-outline"
+                    size="sm"
+                    onClick={() => openWhatsApp(location.whatsapp)}
+                    className="w-full"
+                  >
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    WhatsApp {location.title}
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </Card>
         </div>
       </div>
     </section>

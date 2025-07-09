@@ -66,8 +66,8 @@ const About = ({ language }: AboutProps) => {
   return (
     <section id="nosotros" className="py-20 bg-dark-lighter">
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          <div className="animate-slide-in">
+        <div className="grid lg:grid-cols-1 gap-16 items-center">
+          <div className="animate-slide-in text-center max-w-4xl mx-auto">
             <h2 className="font-display text-4xl md:text-6xl font-bold text-foreground mb-6">
               {content[language].title}
             </h2>
@@ -93,46 +93,7 @@ const About = ({ language }: AboutProps) => {
             </div>
           </div>
 
-          <div className="relative animate-fade-in" style={{ animationDelay: "0.3s" }}>
-            <div className="relative">
-              <div className="absolute inset-0 bg-gradient-gold rounded-2xl transform rotate-3"></div>
-              <div className="relative bg-dark rounded-2xl p-8 border border-dark-border">
-                <div className="text-center">
-                  <div className="w-20 h-20 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-6">
-                    <Sparkles className="w-10 h-10 text-dark" />
-                  </div>
-                  <h3 className="font-display text-2xl font-bold text-foreground mb-4">
-                    Tony Ruiz Hair Studio
-                  </h3>
-                  <p className="text-foreground/70 mb-6">
-                    {language === "es" 
-                      ? "Donde tu cabello encuentra su mejor versión" 
-                      : "Where your hair finds its best version"}
-                  </p>
-                  <div className="space-y-3">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-foreground/60">
-                        {language === "es" ? "Experiencia:" : "Experience:"}
-                      </span>
-                      <span className="text-primary font-semibold">15+ años</span>
-                    </div>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-foreground/60">
-                        {language === "es" ? "Clientes satisfechos:" : "Satisfied clients:"}
-                      </span>
-                      <span className="text-primary font-semibold">2000+</span>
-                    </div>
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-foreground/60">
-                        {language === "es" ? "Ubicaciones:" : "Locations:"}
-                      </span>
-                      <span className="text-primary font-semibold">2</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
       </div>
     </section>
