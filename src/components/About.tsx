@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Award, Users, Sparkles, Heart } from "lucide-react";
+import { Award, Users, Sparkles, Heart, Gem, Handshake, Star, Brush } from "lucide-react";
 
 interface AboutProps {
   language: "es" | "en";
@@ -13,22 +13,22 @@ const About = ({ language }: AboutProps) => {
       description: "Respaldados por una marcada trayectoria y una dedicación continua a la evolución de las técnicas, nuestro salón de autor ofrece un enfoque exclusivo y personalizado. Colaboramos en la definición del color, corte o tratamiento perfecto, asegurando una mejora sofisticada que realmente refleja el estilo y la esencia de un trabajo con sello propio.",
       features: [
         {
-          icon: Award,
+          icon: Gem,
           title: "Experiencia Profesional",
           description: "Años de experiencia perfeccionando técnicas avanzadas"
         },
         {
-          icon: Users,
+          icon: Handshake,
           title: "Atención Personalizada",
           description: "Cada cliente recibe un tratamiento único y exclusivo"
         },
         {
-          icon: Sparkles,
+          icon: Star,
           title: "Productos Premium",
           description: "Solo utilizamos las mejores marcas del mercado"
         },
         {
-          icon: Heart,
+          icon: Brush,
           title: "Pasión por el Arte",
           description: "Creamos belleza con dedicación y amor por nuestro trabajo"
         }
@@ -78,16 +78,18 @@ const About = ({ language }: AboutProps) => {
               {content[language].description}
             </p>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               {content[language].features.map((feature, index) => (
                 <Card 
                   key={feature.title}
-                  className="p-6 bg-dark/50 border-dark-border hover:border-primary/30 transition-all duration-300 animate-scale-in"
+                  className="p-8 flex flex-col items-center text-center bg-gradient-gold/20 border-gold shadow-gold hover:shadow-lg hover:scale-105 transition-all duration-300 animate-scale-in rounded-2xl"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <feature.icon className="w-8 h-8 text-primary mb-4" />
-                  <h4 className="font-semibold text-foreground mb-2">{feature.title}</h4>
-                  <p className="text-sm text-foreground/70">{feature.description}</p>
+                  <div className="w-16 h-16 flex items-center justify-center rounded-full mb-4 bg-gradient-gold shadow-gold animate-glow">
+                    <feature.icon className="w-8 h-8 text-dark" />
+                  </div>
+                  <h4 className="font-semibold text-foreground mb-2 text-lg">{feature.title}</h4>
+                  <p className="text-base text-foreground/80">{feature.description}</p>
                 </Card>
               ))}
             </div>
