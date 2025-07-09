@@ -116,25 +116,23 @@ const Services = ({ language }: ServicesProps) => {
                 </div>
               </div>
 
-              <div className="p-8 flex flex-col h-full justify-between items-center text-center">
-                <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-3">
+              <div className="p-8 flex flex-col h-full justify-between">
+                <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
                   {service.title}
                 </h3>
-                <p className="text-base md:text-lg text-foreground/80 mb-3 leading-relaxed">
+                <p className="text-base md:text-lg text-foreground/80 mb-2 leading-relaxed text-center">
                   {service.description}
                 </p>
-                <p className="text-sm md:text-base text-foreground/60 leading-relaxed mb-6">
+                <p className="text-base md:text-lg text-foreground/60 leading-relaxed mb-6 text-center">
                   {service.details}
                 </p>
-                <div className="mt-auto w-full flex justify-center">
-                  <Button 
-                    variant="gold-outline"
-                    className="w-full max-w-xs"
-                    onClick={() => document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" })}
-                  >
-                    {language === "es" ? "Consultar" : "Inquire"}
-                  </Button>
-                </div>
+                <Button 
+                  variant="gold-outline"
+                  className="w-full max-w-xs mx-auto"
+                  onClick={() => document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" })}
+                >
+                  {language === "es" ? "Consultar" : "Inquire"}
+                </Button>
               </div>
             </Card>
           ))}
