@@ -148,6 +148,20 @@ export default {
 					'100%': {
 						boxShadow: '0 0 20px hsl(45 96% 65% / 0.3)'
 					}
+				},
+				'float': {
+					'0%': {
+						transform: 'translateY(0px) rotate(0deg)'
+					},
+					'33%': {
+						transform: 'translateY(-10px) rotate(1deg)'
+					},
+					'66%': {
+						transform: 'translateY(5px) rotate(-1deg)'
+					},
+					'100%': {
+						transform: 'translateY(0px) rotate(0deg)'
+					}
 				}
 			},
 			animation: {
@@ -156,7 +170,8 @@ export default {
 				'fade-in': 'fade-in 0.6s ease-out',
 				'slide-in': 'slide-in 0.5s ease-out',
 				'scale-in': 'scale-in 0.4s ease-out',
-				'glow': 'glow 2s ease-in-out infinite'
+				'glow': 'glow 2s ease-in-out infinite',
+				'float': 'float 6s ease-in-out infinite'
 			}
 		}
 	},
