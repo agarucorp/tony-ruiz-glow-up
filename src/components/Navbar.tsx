@@ -54,12 +54,7 @@ const Navbar = ({ language, setLanguage }: NavbarProps) => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="font-display font-bold text-2xl bg-gradient-gold bg-clip-text text-transparent">
-              Tony Ruiz
-            </div>
-            <div className="text-xs text-foreground/70 font-light tracking-wider uppercase">
-              Hair Studio
-            </div>
+            <img src="/logotr.svg" alt="Tony Ruiz Hair Studio Logo" className="h-7 w-auto" />
           </div>
 
           {/* Desktop Navigation */}
