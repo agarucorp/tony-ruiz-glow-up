@@ -1,5 +1,6 @@
+
 import { Button } from "@/components/ui/button";
-import { Sparkles, ArrowDown } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import heroImage from "@/assets/hero-image.jpg";
 
 interface HeroProps {
@@ -11,14 +12,12 @@ const Hero = ({ language }: HeroProps) => {
     es: {
       title: "Especialistas en",
       subtitle: "coloración y alisados",
-      description: "Transformamos tu cabello con técnicas avanzadas y productos de lujo. Experimenta la excelencia en nuestro salón de autor.",
       cta: "Reservar Cita",
       scroll: "Descubrir más"
     },
     en: {
       title: "Specialists in",
       subtitle: "coloring and straightening",
-      description: "We transform your hair with advanced techniques and luxury products. Experience excellence in our signature salon.",
       cta: "Book Appointment",
       scroll: "Discover more"
     }
@@ -44,11 +43,9 @@ const Hero = ({ language }: HeroProps) => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         <div className="animate-fade-in">
-          
-          
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-4 leading-tight">
+          <h1 className="font-display text-6xl md:text-8xl lg:text-9xl font-bold text-foreground mb-16 leading-[0.9] tracking-tight">
             {content[language].title}
             <br />
             <span className="bg-gradient-gold bg-clip-text text-transparent">
@@ -56,15 +53,11 @@ const Hero = ({ language }: HeroProps) => {
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-foreground/80 mb-12 max-w-2xl mx-auto font-light leading-relaxed">
-            {content[language].description}
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center mt-20">
             <Button 
               size="lg" 
               variant="gold"
-              className="text-lg px-8 py-4 rounded-full"
+              className="text-xl px-12 py-6 rounded-full font-semibold tracking-wide hover:scale-105 transition-all duration-500"
               onClick={() => document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" })}
             >
               {content[language].cta}
@@ -73,16 +66,15 @@ const Hero = ({ language }: HeroProps) => {
             <Button 
               size="lg" 
               variant="gold-outline"
-              className="text-lg px-8 py-4 rounded-full"
+              className="text-xl px-12 py-6 rounded-full font-semibold tracking-wide hover:scale-105 transition-all duration-500 group"
               onClick={scrollToServices}
             >
               {content[language].scroll}
-              <ArrowDown className="w-5 h-5 ml-2 animate-bounce" />
+              <ArrowDown className="w-6 h-6 ml-3 group-hover:translate-y-1 transition-transform duration-300" />
             </Button>
           </div>
         </div>
       </div>
-
     </section>
   );
 };
