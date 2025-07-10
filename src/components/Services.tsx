@@ -1,10 +1,11 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Palette, Zap, Scissors, Sparkles } from "lucide-react";
-import colorService from "@/assets/color-service.jpg";
-import straighteningService from "@/assets/straightening-service.jpg";
-import cuttingService from "@/assets/cutting-service.jpg";
-import treatmentService from "@/assets/treatment-service.jpg";
+import colorService from "@/assets/color-service.jpg"; // Si falla, revisa la configuración de imports o usa require
+import straighteningService from "@/assets/straightening-service.jpg"; // Si falla, revisa la configuración de imports o usa require
+import cuttingService from "@/assets/cutting-service.jpg"; // Si falla, revisa la configuración de imports o usa require
+import treatmentService from "@/assets/treatment-service.jpg"; // Si falla, revisa la configuración de imports o usa require
 
 interface ServicesProps {
   language: "es" | "en";
@@ -101,7 +102,7 @@ const Services = ({ language = "es" }: ServicesProps) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
           {content[lang].services.map((service, index) => (
-            <Card 
+            <Card
               key={service.title}
               className="group relative overflow-hidden bg-dark-lighter border-dark-border hover:border-primary/30 transition-all duration-500 opacity-0 animate-fadeIn"
               style={{ animationDelay: `${index * 0.2}s`, animationFillMode: "forwards" }}
@@ -115,7 +116,7 @@ const Services = ({ language = "es" }: ServicesProps) => {
                 <div className="absolute inset-0 bg-gradient-dark/60 group-hover:bg-gradient-dark/40 transition-all duration-500"></div>
                 <div className="absolute top-6 left-6">
                   <div className="w-12 h-12 bg-gradient-gold rounded-full flex items-center justify-center">
-                    <service.icon className="w-6 h-6 text-dark" />
+                    {React.createElement(service.icon, { className: "w-6 h-6 text-dark" })}
                   </div>
                 </div>
               </div>
