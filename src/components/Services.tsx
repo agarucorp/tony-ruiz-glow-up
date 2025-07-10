@@ -2,10 +2,10 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Palette, Zap, Scissors, Sparkles } from "lucide-react";
-import colorService from "@/assets/color-service.jpg"; // Si falla, revisa la configuración de imports o usa require
-import straighteningService from "@/assets/straightening-service.jpg"; // Si falla, revisa la configuración de imports o usa require
-import cuttingService from "@/assets/cutting-service.jpg"; // Si falla, revisa la configuración de imports o usa require
-import treatmentService from "@/assets/treatment-service.jpg"; // Si falla, revisa la configuración de imports o usa require
+import colorService from "@/assets/color-service.jpg";
+import straighteningService from "@/assets/straightening-service.jpg";
+import cuttingService from "@/assets/cutting-service.jpg";
+import treatmentService from "@/assets/treatment-service.jpg";
 
 interface ServicesProps {
   language: "es" | "en";
@@ -83,10 +83,7 @@ const Services = ({ language = "es" }: ServicesProps) => {
     }
   };
 
-  // Fallback para idioma no soportado
   const lang = content[language] ? language : "es";
-
-  // Corregido: Asegurarse de que el componente funcione correctamente y el código esté en español
 
   return (
     <section id="servicios" className="py-20 bg-dark">
@@ -101,45 +98,48 @@ const Services = ({ language = "es" }: ServicesProps) => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {content[lang].services.map((service, index) => (
-            <Card
-              key={service.title}
-              className="group relative overflow-hidden bg-dark-lighter border-dark-border hover:border-primary/30 transition-all duration-500 opacity-0 animate-fadeIn"
-              style={{ animationDelay: `${index * 0.2}s`, animationFillMode: "forwards" }}
-            >
-              <div className="relative h-80 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-dark/60 group-hover:bg-gradient-dark/40 transition-all duration-500"></div>
-                <div className="absolute top-6 left-6">
-                  <div className="w-12 h-12 bg-gradient-gold rounded-full flex items-center justify-center">
-                    {React.createElement(service.icon, { className: "w-6 h-6 text-dark" })}
+          {content[lang].services.map((service, index) => {
+            const IconComponent = service.icon;
+            return (
+              <Card
+                key={service.title}
+                className="group relative overflow-hidden bg-dark-lighter border-dark-border hover:border-primary/30 transition-all duration-500 opacity-0 animate-fadeIn"
+                style={{ animationDelay: `${index * 0.2}s`, animationFillMode: "forwards" }}
+              >
+                <div className="relative h-80 overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-dark/60 group-hover:bg-gradient-dark/40 transition-all duration-500"></div>
+                  <div className="absolute top-6 left-6">
+                    <div className="w-12 h-12 bg-gradient-gold rounded-full flex items-center justify-center">
+                      <IconComponent className="w-6 h-6 text-dark" />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="p-8 flex flex-col h-full justify-between">
-                <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
-                  {service.title}
-                </h3>
-                <p className="text-base md:text-lg text-foreground/80 mb-2 leading-relaxed text-center">
-                  {service.description}
-                </p>
-                <p className="text-base md:text-lg text-foreground/60 leading-relaxed mb-6 text-center">
-                  {service.details}
-                </p>
-                <Button 
-                  variant="gold-outline"
-                  className="w-full max-w-xs mx-auto"
-                  onClick={() => document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" })}
-                >
-                  {lang === "es" ? "Consultar" : "Inquire"}
-                </Button>
-              </div>
-            </Card>
-          ))}
+                <div className="p-8 flex flex-col h-full justify-between">
+                  <h3 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-4 text-center">
+                    {service.title}
+                  </h3>
+                  <p className="text-base md:text-lg text-foreground/80 mb-2 leading-relaxed text-center">
+                    {service.description}
+                  </p>
+                  <p className="text-base md:text-lg text-foreground/60 leading-relaxed mb-6 text-center">
+                    {service.details}
+                  </p>
+                  <Button 
+                    variant="gold-outline"
+                    className="w-full max-w-xs mx-auto"
+                    onClick={() => document.querySelector("#contacto")?.scrollIntoView({ behavior: "smooth" })}
+                  >
+                    {lang === "es" ? "Consultar" : "Inquire"}
+                  </Button>
+                </div>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
